@@ -1,0 +1,58 @@
+#
+# Conditional build:
+%bcond_without	tests	# do not perform "make test"
+#
+%include	/usr/lib/rpm/macros.perl
+%define	pdir	FCGI
+%define	pnam	ProcManager
+Summary:	FCGI::ProcManager - functions for managing FastCGI applications
+Name:		perl-FCGI-ProcManager
+Version:	0.17
+Release:	0.3
+License:	LGPL v2
+Group:		Development/Languages/Perl
+Source0:	http://www.cpan.org/modules/by-module/%{pdir}/%{pdir}-%{pnam}-%{version}.tar.gz
+# Source0-md5:	bd59bf793574d68024060a8a197419f7
+BuildRequires:	perl-devel >= 1:5.8.0
+BuildRequires:	rpm-perlprov >= 4.1-13
+BuildArch:	noarch
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%description
+FCGI::ProcManager is used to serve as a FastCGI process manager. By
+re-implementing it in perl, developers can more finely tune
+performance in their web applications, and can take advantage of
+copy-on-write semantics prevalent in UNIX kernel process management.
+The process manager should be invoked before the caller's request
+loop.
+
+%prep
+%setup -q -n %{pdir}-%{pnam}-%{version}
+
+%build
+%{__perl} Makefile.PL \
+	INSTALLDIRS=vendor
+%{__make} \
+	OPTIMIZE="%{rpmcflags}"
+
+%{?with_tests:%{__make} test}
+
+%install
+rm -rf $RPM_BUILD_ROOT
+install -d $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
+
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
+
+rm -f $RPM_BUILD_ROOT%{perl_archlib}/perllocal.pod
+rm -f $RPM_BUILD_ROOT%{perl_vendorarch}/auto/%{pdir}/%{pnam}/.packlist
+
+%clean
+rm -rf $RPM_BUILD_ROOT
+
+%files
+%defattr(644,root,root,755)
+%doc README
+%dir %{perl_vendorlib}/FCGI
+%{perl_vendorlib}/FCGI/ProcManager.pm
+%{_mandir}/man3/*
