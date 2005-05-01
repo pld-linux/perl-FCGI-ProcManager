@@ -6,6 +6,7 @@
 %define	pdir	FCGI
 %define	pnam	ProcManager
 Summary:	FCGI::ProcManager - functions for managing FastCGI applications
+Summary(pl):	FCGI::ProcManager - funkcje do zarz±dzania aplikacjami FastCGI
 Name:		perl-FCGI-ProcManager
 Version:	0.17
 Release:	0.3
@@ -20,11 +21,19 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 FCGI::ProcManager is used to serve as a FastCGI process manager. By
-re-implementing it in perl, developers can more finely tune
+re-implementing it in Perl, developers can more finely tune
 performance in their web applications, and can take advantage of
 copy-on-write semantics prevalent in UNIX kernel process management.
 The process manager should be invoked before the caller's request
 loop.
+
+%description -l pl
+FCGI::ProcManager s³u¿y jako zarz±dca procesów FastCGI. Poprzez
+reimplementacjê tego w Perlu programi¶ci mog± poprawiæ wydajno¶æ ich
+aplikacji WWW i wykorzystaæ zalety semantyki copy-on-write
+przewa¿aj±cej w zarz±dzaniu procesami w j±drach systemów UNIX.
+Zarz±dca procesów powinien byæ wywo³ywany przed pêtl± ¿±dañ
+wywo³uj±cego.
 
 %prep
 %setup -q -n %{pdir}-%{pnam}-%{version}
