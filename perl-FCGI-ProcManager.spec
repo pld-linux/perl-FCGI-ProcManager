@@ -1,15 +1,15 @@
 #
 # Conditional build:
 %bcond_without	tests	# do not perform "make test"
-#
-%include	/usr/lib/rpm/macros.perl
+
 %define	pdir	FCGI
 %define	pnam	ProcManager
+%include	/usr/lib/rpm/macros.perl
 Summary:	FCGI::ProcManager - functions for managing FastCGI applications
 Summary(pl.UTF-8):	FCGI::ProcManager - funkcje do zarządzania aplikacjami FastCGI
 Name:		perl-FCGI-ProcManager
 Version:	0.24
-Release:	1
+Release:	2
 License:	LGPL v2.1
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/FCGI/%{pdir}-%{pnam}-%{version}.tar.gz
@@ -64,7 +64,6 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %doc README
-%dir %{perl_vendorlib}/FCGI
 %{perl_vendorlib}/FCGI/ProcManager.pm
 %dir %{perl_vendorlib}/FCGI/ProcManager
 %{perl_vendorlib}/FCGI/ProcManager/Constrained.pm
