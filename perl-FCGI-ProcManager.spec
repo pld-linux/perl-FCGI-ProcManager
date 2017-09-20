@@ -8,12 +8,12 @@
 Summary:	FCGI::ProcManager - functions for managing FastCGI applications
 Summary(pl.UTF-8):	FCGI::ProcManager - funkcje do zarządzania aplikacjami FastCGI
 Name:		perl-FCGI-ProcManager
-Version:	0.25
+Version:	0.28
 Release:	1
 License:	LGPL v2.1
 Group:		Development/Languages/Perl
 Source0:	http://www.cpan.org/modules/by-module/FCGI/%{pdir}-%{pnam}-%{version}.tar.gz
-# Source0-md5:	8cdb9e0f236443a0ae499a54f80c2492
+# Source0-md5:	26b2000544015bf7c40a4b3caa7fbba3
 URL:		http://search.cpan.org/dist/FCGI-ProcManager/
 BuildRequires:	perl-devel >= 1:5.8.0
 BuildRequires:	rpm-perlprov >= 4.1-13
