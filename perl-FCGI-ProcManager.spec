@@ -4,7 +4,6 @@
 
 %define	pdir	FCGI
 %define	pnam	ProcManager
-%include	/usr/lib/rpm/macros.perl
 Summary:	FCGI::ProcManager - functions for managing FastCGI applications
 Summary(pl.UTF-8):	FCGI::ProcManager - funkcje do zarządzania aplikacjami FastCGI
 Name:		perl-FCGI-ProcManager
